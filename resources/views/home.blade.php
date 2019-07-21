@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-center">Dashboard</div>
+                <div class="card-header text-center ">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,10 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="float-md-right"><a href="/posts/create" class="btn btn-primary">Create Post</a></div>
+                    <div class="float-md-right"><a href="/posts/create" class="btn btn-primary mb-2 shadow  ">Create Post</a></div>
                     <h3>Your Blog Posts</h3>
-		            @if
-	                    <table class="table table-striped">
+		            @if(count($posts)>0)
+	                    <table class="table table-striped shadow-sm">
 	                        <tr>
 	                            <th>Title</th>
 	                            <th>Updated On</th>
@@ -26,22 +26,24 @@
 	                        </tr>
 	                        @foreach($posts as $post)
 	                            <tr>
-	                                <th>{{$post->title}}</th>
-	                                <th>{{$post->updated_at}}</th>
-	                                <th><div><button class="btn btn-primary">View</button></div></th>
-	                                <th><div class="float-right" ><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a> </div></th>
-	                                <th><div class="  float-right">
+	                                <td>{{$post->title}}</td>
+	                                <td>{{$post->updated_at}}</td>
+	                                <td><div><a class="btn btn-primary" href="/posts/{{$post->id}}">View</a></div></td>
+	                                <td><div class="float-right" ><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a> </div></td>
+	                                <td><div class="  float-right">
 	                                        {!! Form::open(['action' => ['PostsController@destroy',$post->id],
 	                                                        'method' => 'POST']) !!}
 	                                        {{ Form::hidden('_method', 'DELETE') }}
 	                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger pull-right']) }}
 	                                        {!! Form::close() !!}
-	                                    </div></th>
+	                                    </div></td>
 	
 	                            </tr>
 	                        @endforeach
                     	</table>
-		      @endif
+						@else
+						<p>You have no Posts</p>
+		     		 @endif
                 </div>
             </div>
         </div>

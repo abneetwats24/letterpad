@@ -24,7 +24,10 @@
                     {!! Form::open(['action' => ['API\CgiController@ocr'],
                                     'method' => 'POST']) !!}
                     {{ Form::hidden("id",$post->id) }}
+<<<<<<< HEAD
                     {{ Form::hidden("user_id",auth()->user()->id) }}
+=======
+>>>>>>> 8f5e8d708de66de5968c804296eeea084ff872a8
                     {{ Form::hidden('_method', 'POST') }}
                     {{ Form::submit('OCR', ['class' => 'btn btn-info']) }}
                     {!! Form::close() !!}

@@ -17,4 +17,8 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 Route::get('/','API\CgiController@index');
+<<<<<<< HEAD
 //Route::post('/ocr','API\CgiController@ocr');
+=======
+Route::post('/ocr','API\CgiController@ocr');
+>>>>>>> 8f5e8d708de66de5968c804296eeea084ff872a8

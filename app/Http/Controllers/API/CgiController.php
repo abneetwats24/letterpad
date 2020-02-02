@@ -29,7 +29,13 @@ class CgiController extends Controller
         curl_setopt ($curl_handle, CURLOPT_POSTFIELDS, $data_string);
         $result = curl_exec ($curl_handle) or die ('There has been an error');
         curl_close ($curl_handle);
+<<<<<<< HEAD
         $post->body = $result;
+=======
+//        $post->body = $result;
+//        $post->save();
+        dd(auth());
+>>>>>>> 8f5e8d708de66de5968c804296eeea084ff872a8
         if (auth()->user()->id !== $post->user_id){
             return redirect('/posts')->with('error','Unauthorized Page');
         }

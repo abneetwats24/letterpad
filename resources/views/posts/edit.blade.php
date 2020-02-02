@@ -15,7 +15,13 @@
             {{Form::file('cover_image')}}
         </div>
         {{Form::hidden('_method', 'PUT') }}
-        {{Form::submit('Submit',['class'=>'btn btn-outline-primary'])}}
+        <div class="form-group">
+            {{Form::submit('Submit',['class'=>'btn btn-outline-primary'])}}
+            <div class="btn">
+                <a href="/posts/{{$post->id}}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </div>
+
     {!! Form::close() !!}
 
 @stop

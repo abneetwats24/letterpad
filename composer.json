@@ -13,6 +13,7 @@
         "geoip2/geoip2": "^2.9",
         "illuminate/html": "^5.0",
         "laravel/framework": "5.8.*",
+        "laravel/passport": "7.5.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
         "torann/geoip": "^1.0"

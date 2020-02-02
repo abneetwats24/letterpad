@@ -54,8 +54,8 @@ class PostsController extends Controller
     {
         $this->validate($request, [
            'title'=>'required',
-           'body'=> 'required',
            'cover_image' => 'image|nullable|max:1999'
+//           'body'=> 'required',
         ]);
 
         if($request->hasFile('cover_image')){
@@ -167,4 +167,8 @@ class PostsController extends Controller
 
         return redirect('/posts')->with('success','Post Deleted');
     }
+
+
+
+
 }

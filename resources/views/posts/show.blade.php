@@ -16,16 +16,25 @@
     <hr>
     @if(!Auth::guest())
         @if (Auth::user()->id == $post->user_id)
-            <div class=" float-left">
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-info">Edit</a>
-            </div>
-            <div class="  float-right">
-            {!! Form::open(['action' => ['PostsController@destroy',$post->id],
-                            'method' => 'POST']) !!}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Delete', ['class' => 'btn btn-danger pull-right']) }}
-            {!! Form::close() !!}
-            </div>
+                <div class=" col-sm-3 float-left">
+                    <a href="/posts/{{$post->id}}/edit" class="btn btn-info">Edit</a>
+    {{--                <a href="/api/ocr" class="btn btn-info">Convert</a>--}}
+                </div>
+                <div class=" col-sm-3 float-left">
+                    {!! Form::open(['action' => ['API\CgiController@ocr'],
+                                    'method' => 'POST']) !!}
+                    {{ Form::hidden("id",$post->id) }}
+                    {{ Form::hidden('_method', 'POST') }}
+                    {{ Form::submit('OCR', ['class' => 'btn btn-info']) }}
+                    {!! Form::close() !!}
+                </div>
+                <div class=" col-sm-1 offset-5 float-left">
+                {!! Form::open(['action' => ['PostsController@destroy',$post->id],
+                                'method' => 'POST']) !!}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Delete', ['class' => 'btn btn-danger pull-right']) }}
+                {!! Form::close() !!}
+                </div>
         @endif
     @endif
     <div class=" col-lg-12 btn pull-right">
